@@ -1,2 +1,2 @@
-# CSC241
+# CSC121
 Haskell
