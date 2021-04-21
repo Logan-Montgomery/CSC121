@@ -1,0 +1,2 @@
+# CSC241
+Haskell
