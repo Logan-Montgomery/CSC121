@@ -1,0 +1,62 @@
+# Input: (S,t) - S is a list of positive integers, t is a positive integer 
+# Output: X - list of positive integers, e.g., X=[1,2,3]
+def Reduce_SubsetSum_to_Partition(instance):
+	(s,t) = instance
+	sum = 0
+	for i in range(0,len(s)):
+		sum += s[i]
+	#newE1 = sum - t
+	newE = (2*t) - sum
+	if newE < 0:
+		newE = newE * -1
+	k = list(s)
+	if newE != 0:
+		k.append(newE)
+	return k
+
+# Input:  Certificate c = (T,S), where T is a subset of S,
+#         both of which are lists of positive integers
+#         e.g., c = ([2,7,12], [1,2,3,7,5,12,4])
+# Output: Certificate c2 = (part1,part2) where part1 and part2 are
+#         two lists of positive integers with equal sum
+#         e.g., c2 = ([15,9,7],[14,3,6,8])
+def Cert_SubsetSum_to_Partition(c):
+    (T,S) = c
+    part2 = []
+    part1 = []
+    sum1 = 0
+    sum2 = 0
+
+    for thing in S:
+
+    	part2.append(thing)
+
+    for thing in T:
+
+    	part1.append(thing)
+
+    	part2.remove(thing)
+
+    for thing in part1:
+
+    	sum1 = thing + sum1
+
+    for thing in part2:
+
+    	sum2 = thing + sum2
+
+    newthing = sum2 - sum1
+
+    if(newthing < 0):
+
+    	part2.append(newthing*-1)
+
+    if(newthing > 0):
+
+    	part1.append(newthing)
+
+    
+
+    c2 = (part1, part2)
+
+    return c2
